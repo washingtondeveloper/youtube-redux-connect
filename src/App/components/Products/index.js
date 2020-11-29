@@ -1,11 +1,14 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 import Card from "../Card";
 
 function Products(props) {
+  const produtos = useSelector((state) => state.products.items);
   return (
     <div className="row">
-      {[].map((item, index) => (
+      {produtos.map((item, index) => (
         <Card
           key={index}
           image={item.image}

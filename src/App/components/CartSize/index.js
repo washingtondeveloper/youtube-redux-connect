@@ -1,6 +1,9 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 function CartSize(props) {
+  const tamanhoItens = useSelector((state) => state.cart.items.length);
   return (
     <div style={{ position: "relative" }}>
       <i
@@ -23,7 +26,7 @@ function CartSize(props) {
           fontWeight: "bold",
         }}
       >
-        0
+        {tamanhoItens}
       </div>
     </div>
   );

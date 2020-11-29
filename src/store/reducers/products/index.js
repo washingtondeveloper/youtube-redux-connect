@@ -41,9 +41,11 @@ const INITIAL_STATE = {
 
 // actions
 
-export default function (state = INITIAL_STATE, action) {
+const productsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     default:
       return state;
   }
-}
+};
+
+export default productsReducer;

@@ -1,6 +1,10 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
 function Card(props) {
+  const dispatch = useDispatch();
+
   return (
     <div className="col-md-4">
       <div className="card mb-3 mt-3" style={{ position: "relative" }}>
@@ -9,7 +13,12 @@ function Card(props) {
             className="fa fa-plus-circle text-white fa-2x"
             aria-hidden="true"
             style={{ cursor: "pointer" }}
-            onClick={() => alert("Item adicionado")}
+            onClick={() =>
+              dispatch({
+                type: "CART_ADD_ITEM",
+                payload: { title: props.title, price: props.price },
+              })
+            }
           ></i>
         </div>
         <img
