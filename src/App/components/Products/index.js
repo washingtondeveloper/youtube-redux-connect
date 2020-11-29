@@ -1,11 +1,13 @@
 import React from "react";
 
+import { connect } from "react-redux";
+
 import Card from "../Card";
 
 function Products(props) {
   return (
     <div className="row">
-      {[].map((item, index) => (
+      {props.produtos.map((item, index) => (
         <Card
           key={index}
           image={item.image}
@@ -18,4 +20,10 @@ function Products(props) {
   );
 }
 
-export default Products;
+function mapStateToProps(state) {
+  return {
+    produtos: state.products.items,
+  };
+}
+
+export default connect(mapStateToProps)(Products);

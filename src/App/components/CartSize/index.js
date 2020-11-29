@@ -1,5 +1,7 @@
 import React from "react";
 
+import { connect } from "react-redux";
+
 function CartSize(props) {
   return (
     <div style={{ position: "relative" }}>
@@ -23,10 +25,15 @@ function CartSize(props) {
           fontWeight: "bold",
         }}
       >
-        0
+        {props.tamanhoItems}
       </div>
     </div>
   );
 }
+function mapStateToProps(state) {
+  return {
+    tamanhoItems: state.cart.items.length,
+  };
+}
 
-export default CartSize;
+export default connect(mapStateToProps)(CartSize);

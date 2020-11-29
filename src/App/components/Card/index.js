@@ -1,5 +1,7 @@
 import React from "react";
 
+import { connect } from "react-redux";
+
 function Card(props) {
   return (
     <div className="col-md-4">
@@ -9,7 +11,9 @@ function Card(props) {
             className="fa fa-plus-circle text-white fa-2x"
             aria-hidden="true"
             style={{ cursor: "pointer" }}
-            onClick={() => alert("Item adicionado")}
+            onClick={() =>
+              props.adicionarItem({ title: props.title, price: props.price })
+            }
           ></i>
         </div>
         <img
@@ -33,4 +37,14 @@ function Card(props) {
   );
 }
 
-export default Card;
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    adicionarItem: (item) => dispatch({ type: "CART_ADD_ITEM", payload: item }),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
